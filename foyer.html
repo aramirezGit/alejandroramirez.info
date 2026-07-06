@@ -7,8 +7,7 @@
 <title>alejandro ramírez</title>
 
 <style>
-
-html,body{
+html, body{
     margin:0;
     height:100%;
 }
@@ -16,90 +15,140 @@ html,body{
 body{
     background:#d6d6c9;
     color:#242421;
-    font-family: Helvetica, Arial, sans-serif;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
+    font-family:Helvetica, Arial, sans-serif;
 }
 
 main{
-    max-width:700px;
-    padding:40px;
+
+    height:100vh;
+
+    padding:85px;
+
+    display:grid;
+
+    grid-template-columns:1fr auto;
+
+    grid-template-rows:auto 1fr auto;
+
 }
 
-h1{
-    font-size:29px;
+.identity{
+    grid-column:1;
+    grid-row:1;
+}
+
+.identity h1{
+
+    margin:0;
+
+    font-size:30px;
+
     font-weight:300;
-    margin-bottom:10px;
+
 }
 
-p{
-    font-size:22px;
-    opacity:.8;
-    margin-bottom:50px;
+.identity p{
+
+    margin-top:12px;
+
+    font-size:19px;
+
+    letter-spacing:.08em;
+
+    opacity:.45;
+
 }
 
-a{
-    color:inherit;
-    text-decoration:none;
-}
 nav{
-    margin-top:45px;
-    margin-bottom:45px;
+
+    grid-column:1;
+
+    grid-row:2;
+
+    align-self:start;
+
+    margin-top:90px;
+
 }
 
 nav a{
+
     display:block;
 
-    font-size:22px;
+    margin:14px 0;
+
+    font-size:20px;
+
+    color:inherit;
+
+    text-decoration:none;
 
     opacity:.7;
 
-    margin:10px 0;
+    transition:opacity .25s;
 
-    transition:opacity .25s ease;
 }
 
 nav a:hover{
+
     opacity:1;
+
 }
 
-a:hover{
-    opacity:.6;
-}
-.contact{
-    /* Layout */
-    display:block;
-    margin-top:10px;
+#hello{
 
-    /* Typography */
+    grid-column:2;
+    grid-row:1;
+
+    justify-self:end;
+
+    margin-top:12px;
+
     font-size:18px;
 
-    /* Appearance */
-    opacity:.5;
+    letter-spacing:.04em;
 
-    /* Animation */
-    transition:opacity .25s ease;
+    color:inherit;
+
+    text-decoration:none;
+
+    opacity:.45;
+
+    transition:.25s;
+}
+
+#hello:hover{
+
+    opacity:1;
+
 }
 
 #cinema{
 
-    position:fixed;
+    grid-column:1;
 
-    top:0;
+    grid-row:3;
 
-    left:0;
+    align-self:end;
 
-    width:100%;
+    justify-self:start;
 
-    height:100%;
+    margin-bottom:10px;
 
-    object-fit:cover;
+    letter-spacing:1em;
 
-    z-index:-1;
+    font-size:20px;
+
+    color:inherit;
+
+    text-decoration:none;
+
+    opacity:.55;
+}
+
+#cinema:hover{
+
+    opacity:1;
 
 }
 </style>
@@ -109,30 +158,33 @@ a:hover{
 <body>
 
 <main>
+<div class="identity">
 
-<h1>alejandro ramírez</h1>
+    <h1>alejandro ramírez</h1>
+
+    <p>Filmmaker · Cook</p>
+
+</div>
+
+<a id="hello" href="mailto:info@alejandroramirez.info">
+
+    Say Hello
+
+</a>
 
 <nav>
 
-<a href="#">images</a>
+    <a href="#">images</a>
 
-<a href="#">journal</a>
+    <a href="#">journal</a>
 
-<a href="#">kitchen</a>
+    <a href="#">kitchen</a>
 
 </nav>
 
-<a class="contact" href="mailto:info@alejandroramirez.info">
-
-say hello
-
-</a>
-<a class="contact" href="index.html">
+<a id="cinema" href="index.html">
     cinema
 </a>
-
-
-
 
 </main>
 
