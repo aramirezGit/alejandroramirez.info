@@ -1,0 +1,391 @@
+/* ==========================================================
+   ALEJANDRO RAMÍREZ — STUDIO
+   STYLE.CSS
+
+   Version: 0.1
+
+   Structure
+
+   1. Base
+   2. Shared Identity
+   3. Foyer
+   4. Image Room
+   5. Animations
+   6. Responsive
+========================================================== */
+
+
+
+/* ==========================================================
+   1. BASE
+========================================================== */
+
+html,
+body{
+
+    margin:0;
+    height:100%;
+
+}
+
+body{
+
+    background:#d6d6c9;
+    color:#242421;
+
+    font-family:Helvetica, Arial, sans-serif;
+
+}
+
+main{
+
+    position:relative;
+
+    width:100%;
+    height:100vh;
+
+    box-sizing:border-box;
+
+}
+
+
+
+/* ==========================================================
+   2. SHARED IDENTITY
+========================================================== */
+
+.identity{
+
+    position:fixed;
+
+    left:60px;
+    top:65px;
+
+    width:180px;
+
+    z-index:1000;
+
+}
+
+.identity h1{
+
+    margin:0;
+
+    white-space:nowrap;
+
+    font-size:20px;
+    font-weight:300;
+
+    line-height:1.1;
+
+}
+
+.identity p{
+
+    margin-top:10px;
+
+    font-size:17px;
+
+    letter-spacing:.22em;
+
+    opacity:.35;
+
+}
+
+.back{
+
+    display:inline-block;
+
+    margin-top:42px;
+
+    font-size:16px;
+
+    color:inherit;
+
+    text-decoration:none;
+
+    opacity:.45;
+
+    transition:opacity .25s;
+
+}
+
+.back:hover{
+
+    opacity:1;
+
+}
+
+
+
+/* ==========================================================
+   3. FOYER
+========================================================== */
+
+nav{
+
+    position:absolute;
+
+    left:85px;
+    top:220px;
+
+}
+
+nav a{
+
+    display:block;
+
+    margin:14px 0;
+
+    font-size:23px;
+
+    color:inherit;
+
+    text-decoration:none;
+
+    opacity:.60;
+
+    transition:opacity .25s;
+
+}
+
+nav a:hover{
+
+    opacity:1;
+
+}
+
+
+
+#hello{
+
+    position:absolute;
+
+    top:75px;
+    right:85px;
+
+    font-size:18px;
+
+    color:inherit;
+
+    text-decoration:none;
+
+    opacity:.60;
+
+    transition:opacity .25s;
+
+}
+
+#hello:hover{
+
+    opacity:1;
+
+}
+
+
+
+#cinema{
+
+    position:absolute;
+
+    left:85px;
+    top:560px;
+
+    font-size:23px;
+
+    color:inherit;
+
+    text-decoration:none;
+
+    opacity:.55;
+
+    transition:opacity .25s;
+
+    display:flex;
+
+    gap:.55em;
+
+}
+
+#cinema:hover{
+
+    opacity:1;
+
+}
+
+
+
+/* ==========================================================
+   4. IMAGE ROOM
+========================================================== */
+
+.gallery{
+
+    max-width:1000px;
+
+    margin-left:340px;
+
+    padding-top:60px;
+
+    padding-bottom:220px;
+
+}
+
+.gallery img,
+.gallery video{
+
+    display:block;
+
+    margin-bottom:140px;
+
+}
+
+
+/* ==========================================================
+   IMAGE SCALE
+========================================================== */
+
+.hero{
+
+    width:100%;
+
+}
+
+.large{
+
+    width:82%;
+
+}
+
+.medium{
+
+    width:62%;
+
+}
+
+.small{
+
+    width:42%;
+
+}
+
+
+
+/* ----- Position ----- */
+
+.left{
+
+    margin-left:0;
+
+}
+
+.center{
+
+    margin-left:auto;
+
+    margin-right:auto;
+
+}
+
+.right{
+
+    margin-left:auto;
+
+}
+
+
+
+/* ==========================================================
+   5. ANIMATIONS
+========================================================== */
+
+#cinema span{
+
+    animation:rgbLoop 8s linear infinite;
+
+}
+
+#cinema span:nth-child(1){animation-delay:0s;}
+#cinema span:nth-child(2){animation-delay:2.5s;}
+#cinema span:nth-child(3){animation-delay:5s;}
+#cinema span:nth-child(4){animation-delay:7.5s;}
+#cinema span:nth-child(5){animation-delay:10s;}
+#cinema span:nth-child(6){animation-delay:12.5s;}
+
+@keyframes rgbLoop{
+
+    0%{color:#242421;}
+    8%{color:#d86a6a;}
+    16%{color:#78b878;}
+    24%{color:#6d8fdc;}
+    32%{color:#242421;}
+    100%{color:#242421;}
+
+}
+
+
+
+/* ==========================================================
+   6. RESPONSIVE
+========================================================== */
+
+@media (max-width:768px){
+
+    .identity{
+
+        left:40px;
+        top:60px;
+
+    }
+
+    .identity h1{
+
+        font-size:28px;
+
+    }
+
+    .identity p{
+
+        font-size:16px;
+
+        margin-top:6px;
+
+        letter-spacing:.20em;
+
+    }
+
+    nav{
+
+        left:40px;
+        top:190px;
+
+    }
+
+    nav a{
+
+        font-size:24px;
+
+    }
+
+    #cinema{
+
+        left:40px;
+        top:540px;
+
+        font-size:18px;
+
+    }
+
+    #hello{
+
+        left:40px;
+
+        right:auto;
+
+        top:610px;
+
+        font-size:18px;
+
+    }
+
+}
