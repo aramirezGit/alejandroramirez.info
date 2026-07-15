@@ -239,7 +239,112 @@ nav a:hover{
     margin-bottom:140px;
 
 }
+/* ======================================================
+   SCORE
+====================================================== */
+.score {
 
+    margin-left: 340px;
+
+    padding-top: 60px;
+
+    padding-bottom: 220px;
+
+    display: block;
+
+}
+.project {
+
+    display: grid;
+
+    grid-template-columns: repeat(36, 40px);
+    grid-template-rows: repeat(10, 40px);
+
+    gap: 8px;
+
+    margin-bottom: 80px;
+
+}
+
+.tile{
+
+    background:#ccc;
+
+}
+.paper {
+
+    background-color: #ece8df;
+
+}
+
+.charcoal {
+
+    background-color: #3b3b3b;
+
+}
+
+.moss {
+
+    background-color: #70755e;
+
+}
+
+.clay {
+
+    background-color: #b78d73;
+
+}
+
+.terracotta {
+
+    background-color: #8f5749;
+
+}
+/* ==========================================================
+   PROJECT D
+========================================================== */
+
+.D1{
+
+    grid-column:1 / 8;
+    grid-row:1 / 11;
+
+}
+
+.D2{
+
+    grid-column:8 / 11;
+    grid-row:1 / 7;
+
+}
+
+.D3{
+
+    grid-column:11 / 17;
+    grid-row:1 / 11;
+
+}
+
+.D4{
+
+    grid-column:17 / 28;
+    grid-row:1 / 11;
+
+}
+
+.D5{
+
+    grid-column:28 / 32;
+    grid-row:1 / 11;
+
+}
+
+.D6{
+
+    grid-column:32 / 37;
+    grid-row:1 / 5;
+
+}
 
 /* ==========================================================
    IMAGE SCALE
@@ -296,7 +401,7 @@ nav a:hover{
 
 
 /* ==========================================================
-   5. ANIMATIONS
+   5. ANIMATIONS 
 ========================================================== */
 
 #cinema span{
