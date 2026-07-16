@@ -259,7 +259,7 @@ nav a:hover{
 
     display:grid;
 
-    grid-template-columns:repeat(36,40px);
+    grid-template-columns:repeat(36,80px);
     grid-template-rows:repeat(10,40px);
 
     gap:8px;
