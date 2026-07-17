@@ -209,6 +209,45 @@ Every design decision should strengthen the sequence rather than add complexity.
 ✓ The website is edited like a film: every modification should strengthen the sequence.
 
 ---
+## Project Palettes
+
+Each project establishes its own atmosphere through a restrained colour palette. Colours belong to the movement rather than to individual tiles.
+
+### Project D — Reel
+
+The threshold between day and night.
+
+- light blue (blue hour)
+- charcoal
+- deep forest green
+- one warm terracotta accent
+
+### Project C — Foodscapes
+
+Landscape, ecology and cultivation.
+
+- muted greens
+- wet soil
+- slate grey
+- Dutch sky blue
+
+### Project B
+
+Editorial, quiet and graphic.
+
+- cream
+- grey
+- black
+- olive
+
+### Project A
+
+Earth, material and warmth.
+
+- earth
+- terracotta
+- clay
+- light ochre
 
 ## Open Questions
 
