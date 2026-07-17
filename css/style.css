@@ -2,7 +2,7 @@
    ALEJANDRO RAMÍREZ — STUDIO
    STYLE.CSS
 
-   Version: 0.1
+   Version: 0.2
 
    Structure
 
@@ -80,9 +80,21 @@ main{
 
 }
 
-.identity p{
+.identity-meta{
+
+    display:flex;
+
+    align-items:baseline;
+
+    gap:18px;
 
     margin-top:10px;
+
+}
+
+.identity p{
+
+    margin:0;
 
     font-size:17px;
 
@@ -94,9 +106,7 @@ main{
 
 .back{
 
-    display:inline-block;
-
-    margin-top:42px;
+    margin:0;
 
     font-size:16px;
 
@@ -214,57 +224,28 @@ nav a:hover{
 }
 
 
-
-/* ==========================================================
-   4. IMAGE ROOM
-========================================================== */
-
-.gallery{
-
-    max-width:1000px;
+/* ======================================================
+   SCORE IMAGE-ROOM
+====================================================== */
+.score{
 
     margin-left:340px;
 
-    padding-top:60px;
+    padding-top:125px;
 
     padding-bottom:220px;
 
 }
 
-.gallery img,
-.gallery video{
-
-    display:block;
-
-    margin-bottom:140px;
-
-}
-/* ======================================================
-   SCORE
-====================================================== */
-.score {
-
-    margin-left: 340px;
-
-    padding-top: 60px;
-
-    padding-bottom: 220px;
-
-    display: block;
-
-}
 .project{
 
     position:relative;
 
     display:grid;
 
-    grid-template-columns:repeat(36,80px);
-    grid-template-rows:repeat(10,40px);
-
     gap:8px;
 
-    margin-bottom:80px;
+    margin-bottom:140px;
 
 }
 
@@ -288,100 +269,81 @@ nav a:hover{
 
 }
 
-.tile{
-
-    background:#ccc;
-
-}
-.tile img,
-.tile video{
-
-    width:100%;
-    height:100%;
-
-    display:block;
-
-    object-fit:cover;
-
-}
-
-.paper {
-
-    background-color: #ece8df;
-
-}
-
-.charcoal {
-
-    background-color: #3b3b3b;
-
-}
-
-.moss {
-
-    background-color: #70755e;
-
-}
-
-.clay {
-
-    background-color: #b78d73;
-
-}
-
-.terracotta {
-
-    background-color: #8f5749;
-
-}
 /* ==========================================================
-   PROJECT D
+
+   PROJECT D 
+
 ========================================================== */
+
+.project.D{
+
+    grid-template-columns:repeat(43,80px);
+
+    grid-template-rows:repeat(10,40px);
+
+}
 
 .D1{
 
-    grid-column:1 / 8;
+    grid-column:1 / 5;
     grid-row:1 / 11;
 
 }
 
 .D2{
 
-    grid-column:8 / 11;
+    grid-column:5 / 10;
     grid-row:1 / 7;
 
 }
 
 .D3{
 
-    grid-column:11 / 17;
+    grid-column:10 / 15;
     grid-row:1 / 11;
 
 }
 
 .D4{
 
-    grid-column:17 / 28;
+    grid-column:15 / 26;
     grid-row:1 / 11;
 
 }
 
 .D5{
 
-    grid-column:28 / 32;
+    grid-column:26 / 32;
     grid-row:1 / 11;
 
 }
 
 .D6{
 
-    grid-column:32 / 37;
+    grid-column:32 / 34;
     grid-row:1 / 5;
 
 }
+.D7{
+
+    grid-column:34 / 43;
+    grid-row:1 / 11;
+
+}
+
 /* ==========================================================
-   PROJECT C
+
+   PROJECT C 
+
 ========================================================== */
+
+.project.C{
+
+    grid-template-columns:repeat(50,80px);
+
+    grid-template-rows:repeat(10,40px);
+
+}
 
 .C1{
 
@@ -425,10 +387,33 @@ nav a:hover{
 
 }
 
+.C7{
+
+    grid-column:37 / 38;
+    grid-row:6 / 7;
+
+}
+
+.C8{
+
+    grid-column:38 / 47;
+    grid-row:6 / 7;
+
+}
 
 /* ==========================================================
-   PROJECT B
+
+   PROJECT B 
+
 ========================================================== */
+
+.project.B{
+
+    grid-template-columns:repeat(36,80px);
+
+    grid-template-rows:repeat(10,40px);
+
+}
 
 .B1{
 
@@ -472,10 +457,19 @@ nav a:hover{
 
 }
 
-
 /* ==========================================================
-   PROJECT A
+
+   PROJECT A 
+
 ========================================================== */
+
+.project.A{
+
+    grid-template-columns:repeat(36,80px);
+
+    grid-template-rows:repeat(10,40px);
+
+}
 
 .A1{
 
@@ -518,59 +512,88 @@ nav a:hover{
     grid-row:1 / 5;
 
 }
-/* ==========================================================
-   IMAGE SCALE
-========================================================== */
 
-.hero{
+
+
+.tile{
+
+    background:#ccc;
+
+}
+.tile img,
+.tile video{
 
     width:100%;
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
 
 }
 
-.large{
+/* ==========================================================
+   COLOUR PALETTE
+========================================================== */
 
-    width:82%;
+.paper {
 
-}
-
-.medium{
-
-    width:62%;
+    background-color: #ece8df;
 
 }
 
-.small{
+.charcoal {
 
-    width:42%;
-
-}
-
-
-
-/* ----- Position ----- */
-
-.left{
-
-    margin-left:0;
+    background-color: #3b3b3b;
 
 }
 
-.center{
+.moss {
 
-    margin-left:auto;
-
-    margin-right:auto;
+    background-color: #70755e;
 
 }
 
-.right{
+.clay {
 
-    margin-left:auto;
+    background-color: #b78d73;
 
 }
 
+.terracotta {
 
+    background-color: #8f5749;
+
+}
+.sky{
+
+    background:#b2bcc6;
+
+}
+
+.slate{
+
+    background:#8a9096;
+
+}
+
+.soil{
+
+    background:#6a5547;
+
+}
+
+.olive{
+
+    background:#6e7353;
+
+}
+
+.ochre{
+
+    background:#c4b289;
+
+}
 
 /* ==========================================================
    5. ANIMATIONS 
