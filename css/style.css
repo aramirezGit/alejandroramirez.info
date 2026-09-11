@@ -7,11 +7,13 @@
    Structure
 
    1. Base
+   1.1  Cinema Entrance
    2. Shared Identity
    3. Foyer
    4. Image Room
-   5. Animations
-   6. Responsive
+   5. Colour Palette
+   6. Animations
+   7. Responsive
 ========================================================== */
 
 
@@ -21,30 +23,67 @@
 ========================================================== */
 
 html,
-body{
+body {
 
-    margin:0;
-    height:100%;
-
-}
-
-body{
-
-    background:#d6d6c9;
-    color:#242421;
-
-    font-family:Helvetica, Arial, sans-serif;
+    margin: 0;
+    height: 100%;
 
 }
 
-main{
 
-    position:relative;
+body {
 
-    width:100%;
-    height:100vh;
+    background: #d6d6c9;
+    color: #242421;
 
-    box-sizing:border-box;
+    font-family: Helvetica, Arial, sans-serif;
+
+}
+
+
+main {
+
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+
+    box-sizing: border-box;
+
+}
+
+
+
+/* ==========================================================
+   1.1 CINEMA ENTRANCE
+========================================================== */
+
+.entry {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+}
+
+
+.cinema-intro {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
 
 }
 
@@ -54,75 +93,80 @@ main{
    2. SHARED IDENTITY
 ========================================================== */
 
-.identity{
+.identity {
 
-    position:fixed;
+    position: fixed;
 
-    left:60px;
-    top:65px;
+    left: 60px;
+    top: 65px;
 
-    width:180px;
+    width: 180px;
 
-    z-index:1000;
-
-}
-
-.identity h1{
-
-    margin:0;
-
-    white-space:nowrap;
-
-    font-size:20px;
-    font-weight:300;
-
-    line-height:1.1;
+    z-index: 1000;
 
 }
 
-.identity-meta{
 
-    display:flex;
+.identity h1 {
 
-    align-items:baseline;
+    margin: 0;
 
-    gap:18px;
+    white-space: nowrap;
 
-    margin-top:10px;
+    font-size: 20px;
+    font-weight: 300;
 
-}
-
-.identity p{
-
-    margin:0;
-
-    font-size:17px;
-
-    letter-spacing:.22em;
-
-    opacity:.35;
+    line-height: 1.1;
 
 }
 
-.back{
 
-    margin:0;
+.identity-meta {
 
-    font-size:16px;
+    display: flex;
 
-    color:inherit;
+    align-items: baseline;
 
-    text-decoration:none;
+    gap: 18px;
 
-    opacity:.45;
-
-    transition:opacity .25s;
+    margin-top: 10px;
 
 }
 
-.back:hover{
 
-    opacity:1;
+.identity p {
+
+    margin: 0;
+
+    font-size: 17px;
+
+    letter-spacing: .22em;
+
+    opacity: .35;
+
+}
+
+
+.back {
+
+    margin: 0;
+
+    font-size: 16px;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    opacity: .45;
+
+    transition: opacity .25s;
+
+}
+
+
+.back:hover {
+
+    opacity: 1;
 
 }
 
@@ -132,408 +176,491 @@ main{
    3. FOYER
 ========================================================== */
 
-nav{
+nav {
 
-    position:absolute;
+    position: absolute;
 
-    left:85px;
-    top:220px;
-
-}
-
-nav a{
-
-    display:block;
-
-    margin:14px 0;
-
-    font-size:23px;
-
-    color:inherit;
-
-    text-decoration:none;
-
-    opacity:.60;
-
-    transition:opacity .25s;
-
-}
-
-nav a:hover{
-
-    opacity:1;
+    left: 85px;
+    top: 220px;
 
 }
 
 
+nav a {
 
-#hello{
+    display: block;
 
-    position:absolute;
+    margin: 14px 0;
 
-    top:75px;
-    right:85px;
+    font-size: 23px;
 
-    font-size:18px;
+    color: inherit;
 
-    color:inherit;
+    text-decoration: none;
 
-    text-decoration:none;
+    opacity: .60;
 
-    opacity:.60;
-
-    transition:opacity .25s;
+    transition: opacity .25s;
 
 }
 
-#hello:hover{
 
-    opacity:1;
+nav a:hover {
+
+    opacity: 1;
 
 }
 
 
 
-#cinema{
+#hello {
 
-    position:absolute;
+    position: absolute;
 
-    left:85px;
-    top:560px;
+    top: 75px;
+    right: 85px;
 
-    font-size:23px;
+    font-size: 18px;
 
-    color:inherit;
+    color: inherit;
 
-    text-decoration:none;
+    text-decoration: none;
 
-    opacity:.55;
+    opacity: .60;
 
-    transition:opacity .25s;
-
-    display:flex;
-
-    gap:.55em;
-
-}
-
-#cinema:hover{
-
-    opacity:1;
+    transition: opacity .25s;
 
 }
 
 
-/* ======================================================
-   SCORE IMAGE-ROOM
-====================================================== */
-.score{
+#hello:hover {
 
-    margin-left:340px;
-
-    padding-top:135px;
-
-    padding-bottom:220px;
+    opacity: 1;
 
 }
 
-.project{
 
-    position:relative;
 
-    display:grid;
+#cinema {
 
-    gap:8px;
+    position: absolute;
 
-    margin-bottom:140px;
+    left: 85px;
+    top: 560px;
+
+    font-size: 23px;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    opacity: .55;
+
+    transition: opacity .25s;
+
+    display: flex;
+
+    gap: .55em;
+
+}
+
+
+#cinema:hover {
+
+    opacity: 1;
 
 }
 
-.project-title{
 
-    position:absolute;
-
-    left:0;
-
-    bottom:-20px;
-
-    margin:0;
-
-    font-size:15px;
-
-    font-weight:300;
-
-    letter-spacing:.08em;
-
-    opacity:.45;
-
-}
 
 /* ==========================================================
-
-   PROJECT D 
-
+   4. IMAGE ROOM
 ========================================================== */
 
-.project.D{
+.score {
 
-    grid-template-columns:repeat(43,80px);
+    margin-left: 340px;
 
-    grid-template-rows:repeat(10,40px);
-
-}
-
-.D1{
-
-    grid-column:1 / 5;
-    grid-row:1 / 11;
+    padding-top: 135px;
+    padding-bottom: 220px;
 
 }
 
-.D2{
 
-    grid-column:5 / 10;
-    grid-row:1 / 7;
+.project {
 
-}
+    position: relative;
 
-.D3{
+    display: grid;
 
-    grid-column:10 / 15;
-    grid-row:1 / 11;
+    gap: 8px;
 
-}
-
-.D4{
-
-    grid-column:15 / 26;
-    grid-row:1 / 11;
+    margin-bottom: 140px;
 
 }
 
-.D5{
 
-    grid-column:26 / 32;
-    grid-row:1 / 11;
+.project-title {
 
-}
+    position: absolute;
 
-.D6{
+    left: 0;
+    bottom: -20px;
 
-    grid-column:32 / 34;
-    grid-row:1 / 5;
+    margin: 0;
 
-}
-.D7{
+    font-size: 15px;
+    font-weight: 300;
 
-    grid-column:34 / 43;
-    grid-row:1 / 11;
+    letter-spacing: .08em;
 
-}
-
-/* ==========================================================
-
-   PROJECT C 
-
-========================================================== */
-
-.project.C{
-
-    grid-template-columns:repeat(50,80px);
-
-    grid-template-rows:repeat(10,40px);
-
-}
-
-.C1{
-
-    grid-column:1 / 8;
-    grid-row:1 / 11;
-
-}
-
-.C2{
-
-    grid-column:8 / 11;
-    grid-row:1 / 5;
-
-}
-
-.C3{
-
-    grid-column:11 / 17;
-    grid-row:1 / 11;
-
-}
-
-.C4{
-
-    grid-column:17 / 28;
-    grid-row:1 / 11;
-
-}
-
-.C5{
-
-    grid-column:28 / 32;
-    grid-row:1 / 11;
-
-}
-
-.C6{
-
-    grid-column:32 / 37;
-    grid-row:1 / 5;
-
-}
-
-.C7{
-
-    grid-column:37 / 38;
-    grid-row:6 / 7;
-
-}
-
-.C8{
-
-    grid-column:38 / 47;
-    grid-row:6 / 7;
-
-}
-
-/* ==========================================================
-
-   PROJECT B 
-
-========================================================== */
-
-.project.B{
-
-    grid-template-columns:repeat(36,80px);
-
-    grid-template-rows:repeat(10,40px);
-
-}
-
-.B1{
-
-    grid-column:1 / 8;
-    grid-row:1 / 11;
-
-}
-
-.B2{
-
-    grid-column:8 / 11;
-    grid-row:1 / 5;
-
-}
-
-.B3{
-
-    grid-column:11 / 17;
-    grid-row:1 / 11;
-
-}
-
-.B4{
-
-    grid-column:17 / 28;
-    grid-row:1 / 11;
-
-}
-
-.B5{
-
-    grid-column:28 / 32;
-    grid-row:1 / 11;
-
-}
-
-.B6{
-
-    grid-column:32 / 37;
-    grid-row:1 / 5;
-
-}
-
-/* ==========================================================
-
-   PROJECT A 
-
-========================================================== */
-
-.project.A{
-
-    grid-template-columns:repeat(36,80px);
-
-    grid-template-rows:repeat(10,40px);
-
-}
-
-.A1{
-
-    grid-column:1 / 8;
-    grid-row:1 / 11;
-
-}
-
-.A2{
-
-    grid-column:8 / 11;
-    grid-row:1 / 5;
-
-}
-
-.A3{
-
-    grid-column:11 / 17;
-    grid-row:1 / 11;
-
-}
-
-.A4{
-
-    grid-column:17 / 28;
-    grid-row:1 / 11;
-
-}
-
-.A5{
-
-    grid-column:28 / 32;
-    grid-row:1 / 11;
-
-}
-
-.A6{
-
-    grid-column:32 / 37;
-    grid-row:1 / 5;
+    opacity: .45;
 
 }
 
 
 
-.tile{
+/* ----------------------------------------------------------
+   PROJECT A — REEL
+---------------------------------------------------------- */
 
-    background:#ccc;
+.project.A {
+
+    grid-template-columns: repeat(43, 80px);
+
+    grid-template-rows: repeat(10, 40px);
 
 }
+
+
+.A1 {
+
+    grid-column: 1 / 5;
+    grid-row: 1 / 11;
+
+}
+
+
+.A2 {
+
+    grid-column: 5 / 10;
+    grid-row: 1 / 7;
+
+}
+
+
+.A3 {
+
+    grid-column: 10 / 15;
+    grid-row: 1 / 11;
+
+}
+
+
+.A4 {
+
+    grid-column: 15 / 26;
+    grid-row: 1 / 11;
+
+}
+
+
+.A5 {
+
+    grid-column: 26 / 32;
+    grid-row: 1 / 11;
+
+}
+
+
+.A6 {
+
+    grid-column: 32 / 34;
+    grid-row: 1 / 5;
+
+}
+
+
+.A7 {
+
+    grid-column: 34 / 43;
+    grid-row: 1 / 11;
+
+}
+
+
+
+/* ----------------------------------------------------------
+   PROJECT B — WHITE CHLOROPHYLL
+---------------------------------------------------------- */
+
+.project.B {
+
+    grid-template-columns: repeat(50, 80px);
+
+    grid-template-rows: repeat(10, 40px);
+
+}
+
+
+.B1 {
+
+    grid-column: 1 / 8;
+    grid-row: 1 / 11;
+
+}
+
+
+.B2 {
+
+    grid-column: 8 / 11;
+    grid-row: 1 / 5;
+
+}
+
+
+.B3 {
+
+    grid-column: 11 / 17;
+    grid-row: 1 / 11;
+
+}
+
+
+.B4 {
+
+    grid-column: 17 / 28;
+    grid-row: 1 / 11;
+
+}
+
+
+.B5 {
+
+    grid-column: 28 / 32;
+    grid-row: 1 / 11;
+
+}
+
+
+.B6 {
+
+    grid-column: 32 / 37;
+    grid-row: 1 / 5;
+
+}
+
+
+.B7 {
+
+    grid-column: 37 / 38;
+    grid-row: 6 / 7;
+
+}
+
+
+.B8 {
+
+    grid-column: 38 / 47;
+    grid-row: 6 / 7;
+
+}
+
+
+
+/* ----------------------------------------------------------
+   PROJECT C
+---------------------------------------------------------- */
+
+.project.C {
+
+    grid-template-columns: repeat(36, 80px);
+
+    grid-template-rows: repeat(10, 40px);
+
+}
+
+
+.C1 {
+
+    grid-column: 1 / 8;
+    grid-row: 1 / 11;
+
+}
+
+
+.C2 {
+
+    grid-column: 8 / 11;
+    grid-row: 1 / 5;
+
+}
+
+
+.C3 {
+
+    grid-column: 11 / 17;
+    grid-row: 1 / 11;
+
+}
+
+
+.C4 {
+
+    grid-column: 17 / 28;
+    grid-row: 1 / 11;
+
+}
+
+
+.C5 {
+
+    grid-column: 28 / 32;
+    grid-row: 1 / 11;
+
+}
+
+
+.C6 {
+
+    grid-column: 32 / 37;
+    grid-row: 1 / 5;
+
+}
+
+
+
+/* ----------------------------------------------------------
+   PROJECT D
+---------------------------------------------------------- */
+
+.project.D {
+
+    grid-template-columns: repeat(36, 80px);
+
+    grid-template-rows: repeat(10, 40px);
+
+}
+
+
+.D1 {
+
+    grid-column: 1 / 8;
+    grid-row: 1 / 11;
+
+}
+
+
+.D2 {
+
+    grid-column: 8 / 11;
+    grid-row: 1 / 5;
+
+}
+
+
+.D3 {
+
+    grid-column: 11 / 17;
+    grid-row: 1 / 11;
+
+}
+
+
+.D4 {
+
+    grid-column: 17 / 28;
+    grid-row: 1 / 11;
+
+}
+
+
+.D5 {
+
+    grid-column: 28 / 32;
+    grid-row: 1 / 11;
+
+}
+
+
+.D6 {
+
+    grid-column: 32 / 37;
+    grid-row: 1 / 5;
+
+}
+
+
+
+/* ----------------------------------------------------------
+   IMAGE ROOM TILES
+---------------------------------------------------------- */
+
+.tile {
+
+    background: #ccc;
+
+}
+
+
 .tile img,
-.tile video{
+.tile video {
 
-    width:100%;
-    height:100%;
+    width: 100%;
+    height: 100%;
 
-    display:block;
+    display: block;
 
-    object-fit:cover;
+    object-fit: cover;
+
+}
+/* ----------------------------------------------------------
+   Project E — placeholder
+---------------------------------------------------------- */
+
+.project.E {
+
+    width: 400px;
+    height: 300px;
 
 }
 
+
+.E-placeholder {
+
+    width: 100%;
+    height: 100%;
+
+    background: #d0d8df;
+
+}
+
+
+
+/* ----------------------------------------------------------
+   Project F — placeholder
+---------------------------------------------------------- */
+
+.project.F {
+
+    width: 400px;
+    height: 300px;
+
+}
+
+
+.F-placeholder {
+
+    width: 100%;
+    height: 100%;
+
+    background: #f0d21a;
+
+}
+
+
 /* ==========================================================
-   COLOUR PALETTE
+   5. COLOUR PALETTE
 ========================================================== */
 
 .paper {
@@ -542,11 +669,13 @@ nav a:hover{
 
 }
 
+
 .charcoal {
 
     background-color: #3b3b3b;
 
 }
+
 
 .moss {
 
@@ -554,137 +683,207 @@ nav a:hover{
 
 }
 
+
 .clay {
 
     background-color: #b78d73;
 
 }
 
+
 .terracotta {
 
     background-color: #8f5749;
 
 }
-.sky{
 
-    background:#d0d8df;
 
-}
+.sky {
 
-.slate{
-
-    background:#8a9096;
+    background: #d0d8df;
 
 }
 
-.soil{
 
-    background:#6a5547;
+.slate {
 
-}
-
-.olive{
-
-    background:#6e7353;
+    background: #8a9096;
 
 }
 
-.ochre{
 
-    background:#c4b289;
+.soil {
 
-}
-
-/* ==========================================================
-   5. ANIMATIONS 
-========================================================== */
-
-#cinema span{
-
-    animation:rgbLoop 8s linear infinite;
+    background: #6a5547;
 
 }
 
-#cinema span:nth-child(1){animation-delay:0s;}
-#cinema span:nth-child(2){animation-delay:2.5s;}
-#cinema span:nth-child(3){animation-delay:5s;}
-#cinema span:nth-child(4){animation-delay:7.5s;}
-#cinema span:nth-child(5){animation-delay:10s;}
-#cinema span:nth-child(6){animation-delay:12.5s;}
 
-@keyframes rgbLoop{
+.olive {
 
-    0%{color:#242421;}
-    8%{color:#d86a6a;}
-    16%{color:#78b878;}
-    24%{color:#6d8fdc;}
-    32%{color:#242421;}
-    100%{color:#242421;}
+    background: #6e7353;
+
+}
+
+
+.ochre {
+
+    background: #c4b289;
 
 }
 
 
 
 /* ==========================================================
-   6. RESPONSIVE
+   6. ANIMATIONS
 ========================================================== */
 
-@media (max-width:768px){
+#cinema span {
 
-    .identity{
+    animation: rgbLoop 8s linear infinite;
 
-        left:40px;
-        top:60px;
+}
+
+
+#cinema span:nth-child(1) {
+
+    animation-delay: 0s;
+
+}
+
+
+#cinema span:nth-child(2) {
+
+    animation-delay: 2.5s;
+
+}
+
+
+#cinema span:nth-child(3) {
+
+    animation-delay: 5s;
+
+}
+
+
+#cinema span:nth-child(4) {
+
+    animation-delay: 7.5s;
+
+}
+
+
+#cinema span:nth-child(5) {
+
+    animation-delay: 10s;
+
+}
+
+
+#cinema span:nth-child(6) {
+
+    animation-delay: 12.5s;
+
+}
+
+
+@keyframes rgbLoop {
+
+    0% {
+        color: #242421;
+    }
+
+    8% {
+        color: #d86a6a;
+    }
+
+    16% {
+        color: #78b878;
+    }
+
+    24% {
+        color: #6d8fdc;
+    }
+
+    32% {
+        color: #242421;
+    }
+
+    100% {
+        color: #242421;
+    }
+
+}
+
+
+
+/* ==========================================================
+   7. RESPONSIVE
+========================================================== */
+
+@media (max-width: 768px) {
+
+
+    .identity {
+
+        left: 40px;
+        top: 60px;
 
     }
 
-    .identity h1{
 
-        font-size:21px;
+    .identity h1 {
 
-    }
-
-    .identity p{
-
-        font-size:16px;
-
-        margin-top:6px;
-
-        letter-spacing:.20em;
+        font-size: 21px;
 
     }
 
-    nav{
 
-        left:40px;
-        top:190px;
+    .identity p {
 
-    }
+        font-size: 16px;
 
-    nav a{
+        margin-top: 6px;
 
-        font-size:24px;
+        letter-spacing: .20em;
 
     }
 
-    #cinema{
 
-        left:40px;
-        top:540px;
+    nav {
 
-        font-size:18px;
+        left: 40px;
+        top: 190px;
 
     }
 
-    #hello{
 
-        left:40px;
+    nav a {
 
-        right:auto;
+        font-size: 24px;
 
-        top:610px;
+    }
 
-        font-size:18px;
+
+    #cinema {
+
+        left: 40px;
+        top: 540px;
+
+        font-size: 18px;
+
+    }
+
+
+    #hello {
+
+        left: 40px;
+
+        right: auto;
+
+        top: 610px;
+
+        font-size: 18px;
 
     }
 
