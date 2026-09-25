@@ -474,61 +474,44 @@ nav a:hover {
 ---------------------------------------------------------- */
 
 .project.C {
-
-    grid-template-columns: repeat(36, 80px);
-
+    grid-template-columns: repeat(40, 80px);
     grid-template-rows: repeat(10, 40px);
-
 }
-
 
 .C1 {
-
     grid-column: 1 / 8;
-    grid-row: 1 / 11;
-
+    grid-row: 1 / 8;
 }
-
 
 .C2 {
-
-    grid-column: 8 / 11;
-    grid-row: 1 / 5;
-
+    grid-column: 1 / 8;
+    grid-row: 8 / 11;
 }
-
 
 .C3 {
-
-    grid-column: 11 / 17;
-    grid-row: 1 / 11;
-
+    grid-column: 8 / 14;
+    grid-row: 1 / 8;
 }
-
 
 .C4 {
-
-    grid-column: 17 / 28;
-    grid-row: 1 / 11;
-
+    grid-column: 8 / 14;
+    grid-row: 8 / 11;
 }
-
 
 .C5 {
-
-    grid-column: 28 / 32;
-    grid-row: 1 / 11;
-
+    grid-column: 14 / 26;
+    grid-row: 1 / 8;
 }
-
 
 .C6 {
-
-    grid-column: 32 / 37;
-    grid-row: 1 / 5;
-
+    grid-column: 26 / 36;
+    grid-row: 1 / 11;
 }
 
+.C7 {
+    grid-column: 36 / 40;
+    grid-row: 1 / 11;
+}
 
 
 /* ----------------------------------------------------------
@@ -733,6 +716,25 @@ nav a:hover {
 
 }
 
+.cyan {
+    background: #00a9c7;
+}
+
+.magenta {
+    background: #d1007f;
+}
+
+.yellow {
+    background: #e0c229;
+}
+
+.red {
+    background: #c23b22;
+}
+
+.green {
+    background: #4f7d4a;
+}
 
 
 /* ==========================================================
