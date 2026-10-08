@@ -86,7 +86,7 @@
 
             scoreElement.textContent = String(fogPossibility);
             dataElement.textContent = `${fogPossibility}/100  |  dew spread ${number(dewSpread, 1)}°C · RH ${number(humidity)}% · wind ${number(wind, 1)} m/s · rain ${number(rain, 1)} mm · temp. ${number(temperature)}°C`;
-            placeElement.textContent = `Lutkemeerpolder field test · Eilandspolder fog project · ${localTime(hours.time[index])} · Grid point ${weather.latitude.toFixed(3)}° N | ${weather.longitude.toFixed(3)}° E`;
+            placeElement.textContent = `Lutkemeerpolder field test · FOODIsEVERYWHERE FOG project · ${localTime(hours.time[index])} · Grid point ${weather.latitude.toFixed(3)}° N | ${weather.longitude.toFixed(3)}° E`;
         }
 
         async function updateWeather() {
