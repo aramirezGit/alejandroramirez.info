@@ -1198,3 +1198,71 @@ nav a:hover {
     white-space: nowrap;
     border: 0;
 }
+
+/* ==========================================================
+   8. FOG
+========================================================== */
+
+.fog-page {
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: clamp(150px, 22vh, 230px) 40px 40px;
+}
+
+.fog-reading {
+    margin: 0;
+    font-size: clamp(86px, 22vw, 320px);
+    font-weight: 600;
+    letter-spacing: -.075em;
+    line-height: .82;
+    white-space: nowrap;
+}
+
+.fog-reading span {
+    margin-left: .28em;
+}
+
+.fog-data {
+    max-width: 1320px;
+    margin: 24px 0 0;
+    font-size: clamp(17px, 2.1vw, 28px);
+    font-weight: 300;
+    line-height: 1.35;
+}
+
+.fog-place,
+.fog-source {
+    margin: 4px 0 0;
+    font-size: clamp(14px, 1.6vw, 22px);
+    font-weight: 300;
+    line-height: 1.35;
+    opacity: .45;
+}
+
+.fog-source {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.fog-source a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.fog-source a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .fog-page {
+        padding: 22vh 24px 32px;
+    }
+
+    .fog-reading {
+        font-size: clamp(70px, 21vw, 126px);
+    }
+
+    .fog-data {
+        margin-top: 20px;
+    }
+}

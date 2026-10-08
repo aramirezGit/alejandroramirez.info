@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#d6d6c9">
+    <meta name="description" content="A live fog possibility reading for field testing in Lutkemeerpolder, rooted in the Eilandspolder project.">
+
+    <title>FOG — alejandro ramírez</title>
+
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <main class="fog-page">
+        <h1 class="fog-reading" aria-label="Fog possibility">
+            FOG <span id="fog-score" aria-live="polite">—</span>
+        </h1>
+
+        <p class="fog-data" id="fog-data" aria-live="polite">Loading weather…</p>
+        <p class="fog-place" id="fog-place">Eilandspolder model · Lutkemeerpolder field test</p>
+        <p class="fog-source"><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · KNMI HARMONIE AROME Netherlands</p>
+    </main>
+
+    <script>
+        const latitude = 52.6408;
+        const longitude = 5.0014;
+        const timezone = "Europe/Amsterdam";
+        const refreshInterval = 60 * 60 * 1000;
+
+        const scoreElement = document.querySelector("#fog-score");
+        const dataElement = document.querySelector("#fog-data");
+        const placeElement = document.querySelector("#fog-place");
+
+        const parameters = new URLSearchParams({
+            latitude,
+            longitude,
+            hourly: "temperature_2m,relative_humidity_2m,dew_point_2m,wind_speed_10m,rain",
+            models: "knmi_harmonie_arome_netherlands",
+            forecast_days: "2",
+            timezone,
+            wind_speed_unit: "ms",
+            timeformat: "unixtime"
+        });
+
+        const apiUrl = `https://api.open-meteo.com/v1/forecast?${parameters}`;
+
+        const number = (value, digits = 0) => Number(value).toFixed(digits);
+
+        function localTime(timestamp) {
+            return new Intl.DateTimeFormat("en-GB", {
+                timeZone: timezone,
+                weekday: "short",
+                day: "numeric",
+                month: "short",
+                hour: "2-digit",
+                minute: "2-digit",
+                hourCycle: "h23"
+            }).format(new Date(timestamp * 1000));
+        }
+
+        function renderWeather(weather) {
+            const hours = weather.hourly;
+            const now = Date.now() / 1000;
+            const index = hours.time.reduce((bestIndex, timestamp, currentIndex) => {
+                return Math.abs(timestamp - now) < Math.abs(hours.time[bestIndex] - now)
+                    ? currentIndex
+                    : bestIndex;
+            }, 0);
+
+            const temperature = hours.temperature_2m[index];
+            const humidity = hours.relative_humidity_2m[index];
+            const dewPoint = hours.dew_point_2m[index];
+            const wind = hours.wind_speed_10m[index];
+            const rain = hours.rain[index];
+            const dewSpread = temperature - dewPoint;
+
+            // A nonlinear dew score plus raw RH reproduces the approved Test 6 reading.
+            // Wind and rain are displayed as context and never reduce the score.
+            const dewScore = 100 / (1 + Math.max(0, dewSpread));
+            const rhScore = humidity;
+            const fogPossibility = Math.round((dewScore + rhScore) / 2);
+
+            scoreElement.textContent = String(fogPossibility);
+            dataElement.textContent = `${fogPossibility}/100  |  dew spread ${number(dewSpread, 1)}°C · RH ${number(humidity)}% · wind ${number(wind, 1)} m/s · rain ${number(rain, 1)} mm · temp. ${number(temperature)}°C`;
+            placeElement.textContent = `Eilandspolder model · Lutkemeerpolder field test · ${localTime(hours.time[index])} · Lat. ${latitude.toFixed(4)} | Long. ${longitude.toFixed(4)}`;
+        }
+
+        async function updateWeather() {
+            try {
+                const response = await fetch(apiUrl, { cache: "no-store" });
+                if (!response.ok) throw new Error(`Weather service returned ${response.status}`);
+
+                const weather = await response.json();
+                renderWeather(weather);
+            } catch (error) {
+                scoreElement.textContent = "—";
+                dataElement.textContent = "Live weather data is temporarily unavailable.";
+                console.error("FOG weather update failed", error);
+            }
+        }
+
+        updateWeather();
+        window.setInterval(updateWeather, refreshInterval);
+    </script>
+</body>
+
+</html>
