@@ -21,13 +21,13 @@
         </h1>
 
         <p class="fog-data" id="fog-data" aria-live="polite">Loading weather…</p>
-        <p class="fog-place" id="fog-place">Eilandspolder model · Lutkemeerpolder field test</p>
+        <p class="fog-place" id="fog-place">Lutkemeerpolder field test · Eilandspolder fog project</p>
         <p class="fog-source"><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · KNMI HARMONIE AROME Netherlands</p>
     </main>
 
     <script>
-        const latitude = 52.6408;
-        const longitude = 5.0014;
+        const latitude = 52.3628;
+        const longitude = 4.7646;
         const timezone = "Europe/Amsterdam";
         const refreshInterval = 60 * 60 * 1000;
 
@@ -86,7 +86,7 @@
 
             scoreElement.textContent = String(fogPossibility);
             dataElement.textContent = `${fogPossibility}/100  |  dew spread ${number(dewSpread, 1)}°C · RH ${number(humidity)}% · wind ${number(wind, 1)} m/s · rain ${number(rain, 1)} mm · temp. ${number(temperature)}°C`;
-            placeElement.textContent = `Eilandspolder model · Lutkemeerpolder field test · ${localTime(hours.time[index])} · Lat. ${latitude.toFixed(4)} | Long. ${longitude.toFixed(4)}`;
+            placeElement.textContent = `Lutkemeerpolder field test · Eilandspolder fog project · ${localTime(hours.time[index])} · Grid point ${weather.latitude.toFixed(3)}° N | ${weather.longitude.toFixed(3)}° E`;
         }
 
         async function updateWeather() {
