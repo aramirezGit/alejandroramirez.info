@@ -38,7 +38,7 @@
         const parameters = new URLSearchParams({
             latitude,
             longitude,
-            hourly: "temperature_2m,relative_humidity_2m,dew_point_2m,wind_speed_10m,rain",
+            hourly: "temperature_2m,relative_humidity_2m,dew_point_2m,wind_speed_10m,rain,visibility",
             models: "knmi_harmonie_arome_netherlands",
             forecast_days: "2",
             timezone,
@@ -76,16 +76,65 @@
             const dewPoint = hours.dew_point_2m[index];
             const wind = hours.wind_speed_10m[index];
             const rain = hours.rain[index];
+            const visibility = hours.visibility[index];
             const dewSpread = temperature - dewPoint;
 
             // A nonlinear dew score plus raw RH reproduces the approved Test 6 reading.
             // Wind and rain are displayed as context and never reduce the score.
-            const dewScore = 100 / (1 + Math.max(0, dewSpread));
-            const rhScore = humidity;
-            const fogPossibility = Math.round((dewScore + rhScore) / 2);
+            // FOG scoring — Model B (proposed test curve)
+// Dew spread and RH have equal weight.
+// Wind and rain are displayed as context; neither affects the score.
 
-            scoreElement.textContent = String(fogPossibility);
-            dataElement.textContent = `${fogPossibility}/100  |  dew spread ${number(dewSpread, 1)}°C · RH ${number(humidity)}% · wind ${number(wind, 1)} m/s · rain ${number(rain, 1)} mm · temp. ${number(temperature)}°C`;
+function scoreDewSpread(spread) {
+    if (!Number.isFinite(spread) || spread < 0) return null;
+
+    if (spread < 0.05) return 100;
+    if (spread < 0.10) return 85;
+    if (spread < 0.20) return 60;
+    if (spread < 0.30) return 30;
+    if (spread < 0.40) return 10;
+    if (spread <= 0.50) return 3;
+    return 1;
+}
+
+function scoreRelativeHumidity(humidity) {
+    if (!Number.isFinite(humidity) || humidity < 0 || humidity > 100) {
+        return null;
+    }
+
+    if (humidity < 96) return 1;
+    if (humidity < 97) return 2;
+    if (humidity < 98) return 4;
+    if (humidity < 99) return 30;
+    return 100;
+}
+
+const dewScore = scoreDewSpread(dewSpread);
+const rhScore = scoreRelativeHumidity(humidity);
+
+const fogPossibility =
+    dewScore !== null && rhScore !== null
+        ? Math.round((dewScore + rhScore) / 2)
+        : null;
+
+
+            scoreElement.textContent =
+    fogPossibility === null ? "—" : String(fogPossibility);
+            const visibilityText = Number.isFinite(visibility)
+    ? `${number(visibility / 1000, 1)} km`
+    : "unavailable";
+
+    dataElement.innerHTML =
+       `${fogPossibility === null ? "—" : `${fogPossibility}/100`}  |  ` +
+       `dew spread ${number(dewSpread, 1)}°C · ` +
+       `RH ${number(humidity)}% · ` +
+       `visibility ${visibilityText} · ` +
+       `<span class="${wind > 4 ? "wind-alert" : ""}">` +
+       `wind ${number(wind, 1)} m/s` +
+       `</span> · ` +
+       `rain ${number(rain, 1)} mm · ` +
+       `temp. ${number(temperature)}°C`;
+
             placeElement.textContent = `Lutkemeerpolder field test · FOODIsEVERYWHERE FOG project · ${localTime(hours.time[index])} · Grid point ${weather.latitude.toFixed(3)}° N | ${weather.longitude.toFixed(3)}° E`;
         }
 

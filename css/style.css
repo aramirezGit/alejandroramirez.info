@@ -1229,7 +1229,10 @@ nav a:hover {
     font-weight: 300;
     line-height: 1.35;
 }
-
+/* Highlight wind above 4 m/s */
+.wind-alert {
+    color: #d1007f;
+}    
 .fog-place,
 .fog-source {
     margin: 4px 0 0;
@@ -1265,4 +1268,5 @@ nav a:hover {
     .fog-data {
         margin-top: 20px;
     }
+    
 }
