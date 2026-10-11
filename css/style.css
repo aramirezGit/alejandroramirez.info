@@ -1479,18 +1479,12 @@ nav a:hover {
 
 @media (max-width: 768px) {
 
-
     .reel-page {
-
-        padding: 30px 15px 70px;
-
+        padding: 135px 15px 70px;
     }
 
-
     .reel-work {
-
-        margin-top: 65px;
-
+        margin-top: 0;
     }
 
 
