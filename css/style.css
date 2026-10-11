@@ -122,15 +122,10 @@ main {
 
 
 .identity-meta {
-
     display: flex;
-
     align-items: baseline;
-
     gap: 18px;
-
-    margin-top: 10px;
-
+    margin-top: 0;
 }
 
 
@@ -1235,15 +1230,10 @@ nav a:hover {
 ---------------------------------------------------------- */
 
 .reel-page {
-
     width: 100%;
-
     min-height: 100vh;
-
     box-sizing: border-box;
-
-    padding: 40px 26px 100px;
-
+    padding: 135px 26px 100px;
 }
 
 
@@ -1252,9 +1242,7 @@ nav a:hover {
 ---------------------------------------------------------- */
 
 .reel-work {
-
-    margin-top: 65px;
-
+    margin-top: 0;
 }
 
 
