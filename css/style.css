@@ -313,13 +313,8 @@ nav a:hover {
     opacity: .45;
 
 }
-.project-title a {
-    color: inherit;
-    text-decoration: none;
-    opacity: 0.5;
-}
-
 .project-title a:hover {
+    color: #d1007f;
     opacity: 1;
 }
 
