@@ -1433,7 +1433,7 @@ nav a:hover {
 
     display: grid;
 
-    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     gap: 14px;
 
@@ -1460,29 +1460,6 @@ nav a:hover {
 }
 
 
-/* ----------------------------------------------------------
-   FIRST ROW
----------------------------------------------------------- */
-
-.reel-fragment-01 {
-
-    grid-column: 1 / 5;
-
-}
-
-
-.reel-fragment-02 {
-
-    grid-column: 5 / 9;
-
-}
-
-
-.reel-fragment-03 {
-
-    grid-column: 9 / 13;
-
-}
 
 
 /* ----------------------------------------------------------
@@ -1553,21 +1530,12 @@ nav a:hover {
     }
 
 
-   .reel-material {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+.reel-material {
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
     gap: 8px;
-}
 
-.reel-fragment-01 {
-    grid-column: 1 / 5;
-}
-
-.reel-fragment-02 {
-    grid-column: 1 / 5;
-}
-
-.reel-fragment-03 {
-    grid-column: 1 / 4;
 }
 
 /* ==========================================================
@@ -1640,4 +1608,5 @@ nav a:hover {
         margin-top: 20px;
     }
     
+}
 }

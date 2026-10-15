@@ -264,9 +264,10 @@ When generating code:
 - Implement before redesigning.
 - HTML first.
 - CSS only when requested.
-- Never duplicate CSS.
+- Never duplicate CSS,.
 - Reuse existing classes whenever possible.
 - Preserve existing visual decisions unless there is a clear architectural reason to change them.
+- Elegant, human-readable CSS. No patchwork: ALWAYS WORK CONTEXTUALLY. 
 
 Every design decision should strengthen the sequence rather than add complexity.
 
@@ -344,52 +345,23 @@ Every design decision should strengthen the sequence rather than add complexity.
 
 ---
 
-## Project Palettes
 
-Each project establishes its own atmosphere through a restrained colour palette. Colours belong to the movement rather than to individual tiles.
 
-### Project D — Reel
+### Project A — Reel
 
-The threshold between day and night.
+We have a extra page as iage and video page. (Alredy Implemented)  
 
-- light blue (blue hour)
-- charcoal
-- deep forest green
-- one warm terracotta accent
+### Project B — white chlorophyll ¬ read - 
 
-### Project C — Foodscapes
+We have a extra page as text page. 
 
-Landscape, ecology and cultivation.
+### Project C sans-nam
 
-- muted greens
-- wet soil
-- slate grey
-- Dutch sky blue
+We have a extra page as iage and video page. (Alredy Implemented) 
 
-### Project B
+### Project D Notes on Dissemination
 
-Editorial, quiet and graphic.
+We have a extra page as text page and images. 
 
-- cream
-- grey
-- black
-- olive
+### Project D mmmm
 
-### Project A
-
-Earth, material and warmth.
-
-- earth
-- terracotta
-- clay
-- light ochre
-
-## Open Questions
-
-- How much contextual material should individual work spaces contain?
-- Should the Image Room use captions?
-- Should projects remain anonymous?
-- Should videos autoplay only when visible?
-- How playful should the interface become?
-- How should multiple fragments of one work be visually related?
-- How much density can an individual work space hold before the interface begins to compete with the work?
