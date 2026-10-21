@@ -181,7 +181,7 @@ nav {
 }
 
 
-nav a {
+body > main > nav a {
 
     display: block;
 
@@ -318,6 +318,13 @@ nav a:hover {
     opacity: 1;
 }
 
+/* SANS-NAM — LINK INTERACTION */
+
+.project-title a[href="sans_nam.html"]:hover,
+.project-title a[href="sans_nam.html"]:active {
+    color: #00a9c7;
+    opacity: 1;
+}
 
 /* ----------------------------------------------------------
    PROJECT A — REEL
@@ -859,11 +866,9 @@ nav a:hover {
     }
 
 
-    nav a {
-
-        font-size: 24px;
-
-    }
+   body > main > nav a {
+    font-size: 24px;
+}
 
 
     #cinema {
@@ -1402,6 +1407,39 @@ nav a:hover {
 
 }
 
+/* ----------------------------------------------------------
+   SANS-NAM — NAVIGATION
+---------------------------------------------------------- */
+
+.reel-page .reel-navigation {
+    position: static;
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 8px;
+
+    width: min(100%, 1100px);
+    box-sizing: border-box;
+    margin: -38px auto 10px;
+
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.45;
+    opacity: .5;
+}
+
+.reel-page .reel-navigation a {
+    display: inline;
+    margin: 0;
+    color: inherit;
+    text-decoration: none;
+    transition: color .2s ease;
+}
+
+.reel-page .reel-navigation a:hover {
+    color: #00a9c7;
+    opacity: 1;
+}
 
 /* ----------------------------------------------------------
    DESCRIPTION
@@ -1509,11 +1547,11 @@ nav a:hover {
 }
 
 
-    .reel-navigation {
-
-        margin-top: 20px;
-
-    }
+.reel-page .reel-navigation {
+    margin-top: 10px;
+    font-size: 11px;
+    gap: 5px;
+}
 
 
     .reel-description {
