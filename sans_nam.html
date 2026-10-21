@@ -1,7 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
+
+<style>
+
+   .reel-navigation a.active {
+    border-bottom: 1px solid #00a9c7;
+    padding-bottom: 4px;
+    opacity: 1;
+}
+
+</style>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,7 +68,7 @@
             <!-- principal video -->
 
 <nav class="reel-navigation" aria-label="Film sections">
-    <a href="#trailer">TRAILER</a>
+    <a href="#trailer" class="active">TRAILER</a>
     <span> | </span>
     <a href="#value">VALUE</a>
     <span> | </span>
@@ -68,7 +79,14 @@
 
 <div class="reel-main-video">
 
-    <div style="position:relative;padding-top:56.25%;"><iframe src="https://player.mediadelivery.net/embed/776619/39dffbb0-39c6-4049-8341-d25f4afdc573?autoplay=false&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;" allowfullscreen="true"></iframe></div>
+    <div style="position:relative;padding-top:56.25%;"><iframe
+    id="sansNamPlayer"
+    src="https://player.mediadelivery.net/embed/776619/39dffbb0-39c6-4049-8341-d25f4afdc573?autoplay=false&loop=false&muted=false&preload=true&responsive=true"
+    loading="lazy"
+    style="border:0;position:absolute;top:0;height:100%;width:100%;"
+    allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
+    allowfullscreen="true">
+</iframe></div>
 
 </div>
 
@@ -211,6 +229,36 @@
 
 
     </main>
+<script>
+    const sansNamPlayer = document.getElementById('sansNamPlayer');
+
+    const sansNamVideos = {
+        trailer: '39dffbb0-39c6-4049-8341-d25f4afdc573',
+        value: '5b4549b5-7086-426a-b0c7-e3fc9912b522',
+        mesh: '5eacaa35-a075-449e-9208-7a898e40dd65',
+        propagation: 'b4dd5dcb-adcc-4371-837d-d2ffa6dc15e6'
+    };
+
+document.querySelectorAll('.reel-navigation a').forEach(link => {
+    link.addEventListener('click', event => {
+        event.preventDefault();
+
+        const section = link.getAttribute('href').substring(1);
+        const video = sansNamVideos[section];
+
+        if (!video) return;
+
+        sansNamPlayer.src =
+            `https://player.mediadelivery.net/embed/776619/${video}?autoplay=false&loop=false&muted=false&preload=true&responsive=true`;
+
+        document.querySelectorAll('.reel-navigation a').forEach(item => {
+            item.classList.remove('active');
+        });
+
+        link.classList.add('active');
+    });
+});
+</script>
 
 </body>
 
