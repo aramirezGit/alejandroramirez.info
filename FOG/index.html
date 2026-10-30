@@ -23,8 +23,9 @@
         <p class="fog-data" id="fog-data" aria-live="polite">Loading weather…</p>
         <p class="fog-place" id="fog-place">Lutkemeerpolder field test · FOODIsEVERYWHERE FOG project</p>
         <p class="fog-source"><a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> · KNMI HARMONIE AROME Netherlands</p>
+        <p class="fog-diagnostics" id="fog-diagnostics"></p>
     </main>
-
+    
     <script>
         const latitude = 52.3628;
         const longitude = 4.7646;
@@ -34,11 +35,12 @@
         const scoreElement = document.querySelector("#fog-score");
         const dataElement = document.querySelector("#fog-data");
         const placeElement = document.querySelector("#fog-place");
+        const diagnosticsElement = document.querySelector("#fog-diagnostics");
 
         const parameters = new URLSearchParams({
             latitude,
             longitude,
-            hourly: "temperature_2m,relative_humidity_2m,dew_point_2m,wind_speed_10m,rain,visibility",
+            hourly: "temperature_2m,relative_humidity_2m,dew_point_2m,wind_speed_10m,rain,visibility,cloud_cover",
             models: "knmi_harmonie_arome_netherlands",
             forecast_days: "2",
             timezone,
@@ -61,7 +63,132 @@
                 hourCycle: "h23"
             }).format(new Date(timestamp * 1000));
         }
+// FOG MODEL C — FIELD OBSERVATION
 
+function interpolate(value, points) {
+    if (!Number.isFinite(value)) return null;
+
+    if (value <= points[0][0]) return points[0][1];
+
+    for (let i = 1; i < points.length; i++) {
+        const [x1, y1] = points[i - 1];
+        const [x2, y2] = points[i];
+
+        if (value <= x2) {
+            return y1 + (value - x1) *
+                (y2 - y1) / (x2 - x1);
+        }
+    }
+
+    return points[points.length - 1][1];
+}
+
+const curves = {
+    dew: [
+        [0, 100],
+        [0.2, 95],
+        [0.5, 85],
+        [1, 65],
+        [1.5, 45],
+        [2, 25],
+        [3, 8],
+        [4, 0]
+    ],
+
+    humidity: [
+        [70, 0],
+        [75, 10],
+        [80, 25],
+        [85, 45],
+        [90, 65],
+        [93, 78],
+        [96, 90],
+        [98, 97],
+        [100, 100]
+    ],
+
+    visibility: [
+        [0, 100],
+        [200, 100],
+        [500, 90],
+        [1000, 75],
+        [2000, 55],
+        [5000, 25],
+        [10000, 0],
+        [20000, 0]
+    ],
+
+    wind: [
+
+    [0, 100],
+    [0.5, 95],
+    [1, 85],
+    [1.5, 80],
+    [2, 70],
+    [2.5, 55],
+    [3, 40],
+    [3.5, 25],
+    [4, 10]
+    ],
+
+    cloud: [
+        [0, 100],
+        [20, 90],
+        [40, 75],
+        [60, 55],
+        [80, 30],
+        [100, 10]
+    ]
+};
+
+function calculateFogScore({
+    dewSpread,
+    humidity,
+    visibility,
+    wind,
+    cloud
+}) {
+    const components = {
+        dew: interpolate(dewSpread, curves.dew),
+        humidity: interpolate(humidity, curves.humidity),
+        visibility: interpolate(visibility, curves.visibility),
+        wind: interpolate(wind, curves.wind),
+        cloud: interpolate(cloud, curves.cloud)
+    };
+
+    const weights = {
+        dew: 30,
+        humidity: 20,
+        visibility: 25,
+        wind: 15,
+        cloud: 10
+    };
+
+    let total = 0;
+    let availableWeight = 0;
+
+    for (const key in components) {
+        if (components[key] === null) continue;
+
+        total += components[key] * weights[key];
+        availableWeight += weights[key];
+    }
+
+    if (availableWeight === 0) {
+        return null;
+    }
+
+    const score = Math.round(total / availableWeight);
+
+    return {
+    score: wind > 4 ? 0 : score,
+    rawScore: score,
+    components,
+    weights,
+    availableWeight,
+    windBlocked: wind > 4
+    };
+}
         function renderWeather(weather) {
             const hours = weather.hourly;
             const now = Date.now() / 1000;
@@ -78,48 +205,66 @@
             const rain = hours.rain[index];
             const visibility = hours.visibility[index];
             const dewSpread = temperature - dewPoint;
+            // FOG MODEL C — FIELD OBSERVATION
+            // Experimental scoring model. Calibration pending field observations.
+            //
+            // Weighted components:
+            // Dew-point spread: 30%
+            // Relative humidity: 20%
+            // Visibility: 25%
+            // Wind: 15%
+            // Cloud cover: 10%
+            //
+            // Rain is contextual only and does not reduce the score.
+            // Wind >= 3 m/s triggers the project-specific IMPOSSIBLE condition.
 
-            // A nonlinear dew score plus raw RH reproduces the approved Test 6 reading.
-            // Wind and rain are displayed as context and never reduce the score.
-            // FOG scoring — Model B (proposed test curve)
-// Dew spread and RH have equal weight.
-// Wind and rain are displayed as context; neither affects the score.
+            const cloud = hours.cloud_cover[index];
 
-function scoreDewSpread(spread) {
-    if (!Number.isFinite(spread) || spread < 0) return null;
+            // Calculate individual atmospheric contributions
+            const fog = calculateFogScore({
+                dewSpread,
+                humidity,
+                visibility,
+                wind,
+                cloud
+            });
 
-    if (spread < 0.05) return 100;
-    if (spread < 0.10) return 85;
-    if (spread < 0.20) return 60;
-    if (spread < 0.30) return 30;
-    if (spread < 0.40) return 10;
-    if (spread <= 0.50) return 3;
-    return 1;
-}
-
-function scoreRelativeHumidity(humidity) {
-    if (!Number.isFinite(humidity) || humidity < 0 || humidity > 100) {
-        return null;
-    }
-
-    if (humidity < 96) return 1;
-    if (humidity < 97) return 2;
-    if (humidity < 98) return 4;
-    if (humidity < 99) return 30;
-    return 100;
-}
-
-const dewScore = scoreDewSpread(dewSpread);
-const rhScore = scoreRelativeHumidity(humidity);
-
-const fogPossibility =
-    dewScore !== null && rhScore !== null
-        ? Math.round((dewScore + rhScore) / 2)
-        : null;
-
+            // Final FOG possibility score
+            const fogPossibility = fog?.score ?? null;
 
             scoreElement.textContent =
-    fogPossibility === null ? "—" : String(fogPossibility);
+                fogPossibility === null
+                    ? "—"
+                    : String(fogPossibility);
+
+            // FOG MODEL C — DIAGNOSTICS
+
+const componentNames = {
+    dew: "DEW",
+    humidity: "RH",
+    visibility: "VIS",
+    wind: "WIND",
+    cloud: "CLOUD"
+};
+
+// Display individual component scores
+const diagnosticText = Object.entries(fog.components)
+    .map(([key, value]) =>
+        `${componentNames[key]} ${value === null
+            ? "—"
+            : Math.round(value)}`
+    )
+    .join(" · ");
+
+// Show percentage of model weight supported by available data
+const coverage = fog.availableWeight;
+
+diagnosticsElement.textContent =
+    `${diagnosticText} · DATA ${coverage}%` +
+    (fog.windBlocked ? " · WIND BLOCKED" : "");
+
+
+
             const visibilityText = Number.isFinite(visibility)
     ? `${number(visibility / 1000, 1)} km`
     : "unavailable";
@@ -145,12 +290,20 @@ const fogPossibility =
 
                 const weather = await response.json();
                 renderWeather(weather);
-            } catch (error) {
-                scoreElement.textContent = "—";
-                dataElement.textContent = "Live weather data is temporarily unavailable.";
-                console.error("FOG weather update failed", error);
-            }
-        }
+
+           } catch (error) {
+            // Preserve the last valid weather reading.
+        // Clearly indicate that the data connection has failed.
+
+               diagnosticsElement.textContent +=
+               " · OLD DATA — Open-Meteo not responding";
+
+               console.warn(
+               "FOG: Open-Meteo unavailable. Displaying previous reading.",
+              error
+    );
+  }
+}
 
         updateWeather();
         window.setInterval(updateWeather, refreshInterval);
